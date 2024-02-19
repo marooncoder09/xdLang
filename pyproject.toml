@@ -2,7 +2,7 @@
 name = "xdlang"
 version = "0.1.0"
 description = ""
-authors = ["Mateusz Bednarski <mateusz.bednarski@windowslive.com>"]
+authors = ["Ayush  <spratap.03.09@gmail.com"]
 
 [tool.poetry.scripts]
 xd = 'xdlang.cli:run'
