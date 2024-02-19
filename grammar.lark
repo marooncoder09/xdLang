@@ -1,0 +1,28 @@
+%import common.WS
+%import common.CNAME
+%import common.NUMBER
+
+LITERAL: NUMBER 
+IDENTIFIER: CNAME
+TYPE: "int" | "string"
+
+var_decl: TYPE IDENTIFIER ";"
+assignment: IDENTIFIER "=" expr ";"
+input_stmt: "input" "(" ")"  // Assuming input doesn't take any arguments
+print_stmt: "print" "(" expr ")" ";"
+expr: LITERAL | IDENTIFIER | input_stmt  // Extend this as needed
+!return_stmt: "return" expr ";"
+
+statement: var_decl
+         | assignment
+         | return_stmt
+         | input_stmt
+         | print_stmt
+
+block: "{" statement* "}"
+
+func_def: "fn" IDENTIFIER "(" (TYPE IDENTIFIER ("," TYPE IDENTIFIER)*)? ")" ":" TYPE block
+
+program: func_def+
+
+%ignore WS
